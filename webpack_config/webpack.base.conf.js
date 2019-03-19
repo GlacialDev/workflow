@@ -69,7 +69,11 @@ module.exports = {
             options: { sourceMap: true, config: { path: path.join(__dirname, './postcss.config.js') } }
           }
         ]
-      }
+      },
+      {
+        test: /\.pug$/,
+        use: ['pug-loader']
+      },
     ]
   },
   plugins: [
@@ -78,7 +82,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       hash: false,
-      template: `${PATHS.src}/index.html`,
+      template: `${PATHS.src}/index.pug`,
       filename: './index.html'
     }),
     new CopyWebpackPlugin([
